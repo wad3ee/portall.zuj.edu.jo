@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جامعة الزيتونة الأردنية</title>
+
+    <!-- Google Font: Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image">
+</head>
+
+<body>
+
+    <!-- ============ TOP NAVBAR ============ -->
+    <header class="topbar">
+        <!-- In RTL source order: this visually sits on the right (logo + title) -->
+        <div class="topbar-brand">
+            <div class="logo-badge">
+                <img src="logo.png" alt="شعار الجامعة">
+            </div>
+            <span class="brand-title">البوابة الالكترونية</span>
+        </div>
+
+        <!-- This visually sits on the left (user info + icons + hamburger) -->
+        <div class="topbar-user">
+            <div class="user-info">
+                <span class="user-id">202311812</span>
+                <span class="user-role">طالب</span>
+            </div>
+            <div class="icon-btn">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="icon-btn">
+                <i class="fa-regular fa-envelope"></i>
+                <span class="badge">0</span>
+            </div>
+            <div class="icon-btn">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge">0</span>
+            </div>
+            <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="app-shell">
+
+        <!-- ============ RIGHT SIDEBAR ============ -->
+        <aside class="sidebar" id="sidebar">
+            <button class="sidebar-icon active" id="homeMenuBtn" title="الرئيسية" aria-expanded="false" aria-controls="menuPanel">
+                <i class="fa-sharp fa-solid fa-house"></i>
+            </button>
+            <button class="sidebar-icon" title="الشاشة">
+                <i class="fa-solid fa-inbox"></i>
+            </button>
+            <button class="sidebar-icon" title="المستخدمون">
+                <i class="fa-solid fa-users"></i>
+            </button>
+        </aside>
+
+        <!-- ============ FLYOUT MENU PANEL (mobile) ============ -->
+        <nav class="menu-panel" id="menuPanel">
+            <div class="menu-panel-header">
+                <button class="menu-panel-close" id="menuCloseBtn" aria-label="إغلاق القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <i class="fa-solid fa-thumbtack menu-pin"></i>
+                <span class="menu-panel-title">الصفحة الرئيسية</span>
+            </div>
+
+            <ul class="menu-list">
+                <li class="menu-item menu-item-active">
+                    <span>الصفحة الرئيسية</span>
+                    <i class="fa-solid fa-table-cells-large"></i>
+                </li>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>أوضاع القائمة</span>
+                    <i class="fa-solid fa-gear"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>اللغة</span>
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>القوالب</span>
+                    <i class="fa-solid fa-palette"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>أكاديمي</span>
+                    <i class="fa-solid fa-message"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item menu-item-expandable personal-menu" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>شخصي</span>
+                    <i class="fa-solid fa-message"></i>
+                </li>
+                <ul class="menu-sublist personal-sublist">
+                    <li class="menu-subitem" data-view="financial">
+                        <span>السجل المالي</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>عهدة الطالب</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>كشف الغيابات</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>العقوبات</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>معلومات الطالب</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>التعليق</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>المخالفات</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>جدول الامتحانات</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                    <li class="menu-subitem">
+                        <span>تعديل بياناتي</span>
+                        <i class="fa-solid fa-check"></i>
+                    </li>
+                </ul>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>التسجيل</span>
+                    <i class="fa-solid fa-message"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item menu-item-expandable" data-menu-toggle>
+                    <i class="fa-solid fa-chevron-down menu-chevron"></i>
+                    <span>روابط خاصة بالطالب</span>
+                    <i class="fa-solid fa-message"></i>
+                </li>
+                <ul class="menu-sublist"></ul>
+
+                <li class="menu-item">
+                    <a class="menu-link" href="file.pdf" target="_blank" rel="noopener">بطاقة الدخول للامتحان</a>
+                    <i class="fa-solid fa-grip-vertical"></i>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ============ MAIN CONTENT ============ -->
+        <main class="main-content">
+            <div class="page-view" id="dashboardView">
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb"  style="display: flex; justify-content: flex-start;">
+                <i class="fa-solid fa-house"></i>
+                <span>الصفحة الرئيسية</span>
+            </div>
+
+            <!-- Top cards grid: Homework + Messages -->
+            <section class="top-cards">
+
+                <article class="stat-card card-homework">
+                    <div class="stat-card-head"  style="display: flex; justify-content: flex-start;">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <h3>الواجب الدراسي</h3>
+                    </div>
+                    <svg class="stat-card-graph" viewBox="0 0 300 70" preserveAspectRatio="none">
+                        <polyline points="0,55 30,40 60,48 90,25 120,38 150,15 180,30 210,20 240,35 270,18 300,28"
+                            fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="2" />
+                    </svg>
+                    <span class="stat-card-count">0</span>
+                </article>
+
+                <article class="stat-card card-messages">
+                    <div class="stat-card-head"  style="display: flex; justify-content: flex-start;">
+                        <i class="fa-regular fa-envelope"></i>
+                        <h3>الرسائل</h3>
+                    </div>
+                    <svg class="stat-card-graph" viewBox="0 0 300 70" preserveAspectRatio="none">
+                        <polyline points="0,55 30,40 60,48 90,25 120,38 150,15 180,30 210,20 240,35 270,18 300,28"
+                            fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="2" />
+                    </svg>
+                    <span class="stat-card-count">0</span>
+                </article>
+
+            </section>
+
+            <!-- Profile banner -->
+            <section class="profile-banner" style="display: flex; justify-content: flex-start;">
+                <h2 class="profile-name">وديع مازن السلاق</h2>
+            </section>
+
+            <!-- Bottom grid: Stats panel + Chart panel -->
+            <section class="bottom-grid">
+
+                <!-- Stats panel (visually right column) -->
+                <div class="panel stats-panel">
+                    <div class="panel-header icon-row">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <i class="fa-solid fa-chart-column"></i>
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <i class="fa-solid fa-table-cells"></i>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="stat-row">
+                            <div class="stat-row-label">
+                                <span class="stat-row-title">الواجب الدراسي</span>
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </div>
+                            <span class="stat-row-value">0</span>
+                            <div class="progress-track">
+                                <div class="progress-fill fill-yellow" style="width: 22%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-row">
+                            <div class="stat-row-label">
+                                <span class="stat-row-title">الرصيد</span>
+                                <i class="fa-solid fa-dollar-sign"></i>
+                            </div>
+                            <span class="stat-row-value value-green">0.0 <small>دينار</small></span>
+                            <div class="progress-track">
+                                <div class="progress-fill fill-dark" style="width: 38%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-row">
+                            <div class="stat-row-label">
+                                <span class="stat-row-title">تنبيهات الغياب</span>
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                            <span class="stat-row-value">0</span>
+                            <div class="progress-track">
+                                <div class="progress-fill fill-gray" style="width: 12%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Chart panel (visually left column) -->
+                <div class="panel chart-panel">
+                    <div class="panel-header">
+                        <h3>نتائج التصويت</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p class="vote-question">كيف تقيم خدمة التسجيل من خلال الانترنت؟</p>
+                        <div class="chart-wrap">
+                            <canvas id="voteChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            </div>
+
+            <div class="page-view hidden" id="financialView">
+                <div class="breadcrumb financial-breadcrumb">
+                    <i class="fa-solid fa-house"></i>
+                    <span>الصفحة الرئيسية</span>
+                    <i class="fa-solid fa-angle-left"></i>
+                    <span>السجل المالي</span>
+                </div>
+
+                <section class="financial-card">
+                    <h2>السجل المالي</h2>
+                    <div class="financial-table-wrap">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>الفصل الدراسي</th>
+                                    <th>الحالة</th>
+                                    <th>التخصص</th>
+                                    <th>عدد الساعات</th>
+                                    <th>الرصيد</th>
+                                    <th>دراسة خاصة؟</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الثاني 2025/2026</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الأول 2025/2026</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الثاني 2024/2025</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الأول 2024/2025</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الثاني 2023/2024</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="radio-dot"></span></td>
+                                    <td>الفصل الأول 2023/2024</td>
+                                    <td>منتظم</td>
+                                    <td>هندسة البرمجيات</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td><span class="checkbox-dot"></span></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">الرصيد الكلي&nbsp;&nbsp; <strong>0.0</strong> دينار</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="financial-spacer"></div>
+
+                <button class="back-btn" type="button" id="financialBackBtn">
+                    <i class="fa-solid fa-circle-left"></i>
+                    رجوع
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Backdrop for mobile sidebar -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
